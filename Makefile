@@ -9,7 +9,7 @@ default: help
 help:
 	@echo 'Usage:'
 	@echo '    make help                 Show help'
-	@echo '    make sta                  Usage: make start'
+	@echo '    make start                Usage: make start'
 	@echo '    make stop                 Usage: make stop'
 	@echo '    make create-topic         Usage: make create-topic topic={topic_name} partition={number} replica={number}'
 	@echo '    make list-topics          Usage: make list-topics'
