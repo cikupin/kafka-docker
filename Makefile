@@ -1,9 +1,8 @@
-.PHONY: default help create-topic list-topics describe-topics delete-topic:
+.PHONY: default help create-topic list-topics describe-topics delete-topic
 
 zookeeper_host = zookeeper:2181
 partition ?= 1
 replica ?= 1
-
 
 default: help
 
