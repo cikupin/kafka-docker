@@ -1,14 +1,15 @@
 version: '2'
 services:
   zookeeper:
-    image: wurstmeister/zookeeper
-    container_name: zookeeper_latest
+    image: zookeeper:3.6.1
+    container_name: zookeeper_3.6.1
     mem_limit: 1g
     ports:
       - "2181:2181"
+
   kafka:
-    image: wurstmeister/kafka:2.12-2.3.0
-    container_name: kafka_2.12-2.3.0
+    image: wurstmeister/kafka:2.12-2.5.0
+    container_name: kafka_2.12-2.5.0
     mem_limit: 1g
     ports:
       - "9092:9092"
@@ -17,3 +18,5 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    links:
+      - zookeeper
