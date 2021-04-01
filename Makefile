@@ -53,17 +53,33 @@ attach:
 
 .PHONY: create-topic
 create-topic:
-	@docker exec kafka_2.12-2.3.0 kafka-topics.sh --create --topic $(topic)  -zookeeper ${zookeeper_host} --partitions $(partition) --replication-factor $(replica)
+	@docker exec kafka_2.12-2.5.0 kafka-topics.sh --create --topic $(topic)  -zookeeper ${zookeeper_host} --partitions $(partition) --replication-factor $(replica)
 
 .PHONY: list
 list-topics:
-	@docker exec kafka_2.12-2.3.0 kafka-topics.sh --list --zookeeper ${zookeeper_host}
+	@docker exec kafka_2.12-2.5.0 kafka-topics.sh --list --zookeeper ${zookeeper_host}
 
 .PHONY: describe-topic
 describe-topic:
-	@docker exec kafka_2.12-2.3.0 kafka-topics.sh --describe --topic $(topic) --zookeeper ${zookeeper_host}
+	@docker exec kafka_2.12-2.5.0 kafka-topics.sh --describe --topic $(topic) --zookeeper ${zookeeper_host}
 
 .PHONY: delete-topic
 delete-topic:
-	@docker exec kafka_2.12-2.3.0 kafka-topics.sh --zookeeper ${zookeeper_host} --delete --topic $(topic)
+	@docker exec kafka_2.12-2.5.0 kafka-topics.sh --zookeeper ${zookeeper_host} --delete --topic $(topic)
+
+.PHONY: create-topic-with-sasl
+create-topic:
+	@docker exec kafka_2.12-2.5.0_sasl kafka-topics.sh --create --topic $(topic)  -zookeeper ${zookeeper_host} --partitions $(partition) --replication-factor $(replica)
+
+.PHONY: list-with-sasl
+list-topics:
+	@docker exec kafka_2.12-2.5.0_sasl kafka-topics.sh --list --zookeeper ${zookeeper_host}
+
+.PHONY: describe-topic-with-sasl
+describe-topic:
+	@docker exec kafka_2.12-2.5.0_sasl kafka-topics.sh --describe --topic $(topic) --zookeeper ${zookeeper_host}
+
+.PHONY: delete-topic-with-sasl
+delete-topic:
+	@docker exec kafka_2.12-2.5.0_sasl kafka-topics.sh --zookeeper ${zookeeper_host} --delete --topic $(topic)
 
